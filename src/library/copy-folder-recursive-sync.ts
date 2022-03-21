@@ -6,8 +6,8 @@ import { copyFileSync } from "./copy-file-sync";
 
 export function copyFolderRecursiveSync(source: string, target: string) {
   // Check if folder needs to be created or integrated
-  // const targetFolder = path.join(target, path.basename(source));
-  const targetFolder = path.resolve(target);
+  const targetFolder = path.join(target, path.basename(source));
+  // const targetFolder = path.resolve(target);
 
   if (!fse.existsSync(targetFolder)) {
     fse.mkdirSync(targetFolder);
