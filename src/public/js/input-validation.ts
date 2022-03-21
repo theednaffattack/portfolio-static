@@ -12,10 +12,15 @@ type Rule = {
   [key: string]: Validator[];
 };
 
-export function validateFormOnSubmit(formName: KeyThing, rules: Rule) {
+export function validateFormOnSubmit(
+  formName: KeyThing,
+  rules: Rule,
+  errorElementClassName: string
+) {
   const forms = document.forms;
 
   const myForm = forms[formName];
+
   if (typeof myForm === "number") return;
   if ("addEventListener" in myForm) {
     myForm.addEventListener("submit", (event) => {
@@ -29,50 +34,45 @@ export function validateFormOnSubmit(formName: KeyThing, rules: Rule) {
         )).value;
       }
 
-      console.log("VIEW RULETHING, RULES:>>", {
-        ruleThing: formValues,
-        myForm,
-      });
+      const validationErrors = new Validation(rules).validate(formValues);
 
-      return new Validation(rules).validate(formValues);
+      const errorSpans = document.getElementsByClassName(errorElementClassName);
+
+      for (const span of errorSpans) {
+        if (span instanceof HTMLSpanElement) {
+          // span is a HTMLSpanElement
+          // span.style.display = "none";
+          const fieldName = span.getAttribute("for");
+          if (!fieldName) {
+            throw new Error('The error field "for" attribute cannot be blank!');
+          }
+          const errorText = validationErrors[fieldName];
+
+          // If there's no error text set innerText to nothing
+          // This is useful only in repeat try / submit scenarios
+          if (!errorText) {
+            // throw new Error(
+            //   "Validation error text is undefined. This is most likely due to a misconfigured rule!"
+            // );
+
+            span.innerText = "";
+          }
+          // If there is errorText, show it
+          if (errorText) {
+            span.innerText = errorText;
+          }
+
+          // span.innerHTML = `<label>${errorText}</label>`;
+          // span.classList.add("contact-form__input-error");
+        } else if (span instanceof SVGElement) {
+          // span is a SVGElement
+          const svgOwner = span.ownerSVGElement;
+        } else {
+          // span is a Element
+          const baseUri = span.baseURI;
+        }
+      }
+      // return new Validation(rules).validate(formValues);
     });
   }
 }
-
-// const forms = document.forms;
-
-// const formName: any = "contact-form";
-
-// const myForm = forms[formName];
-// const inputs = document.getElementsByClassName("contact-form__input");
-
-// console.log("VIEW FORMS", { forms, myForm, inputs });
-// const minLength = 13;
-
-// const rules = {
-//   name: [isRequired("Name is required")],
-//   email: [isRequired("Email is required"), isEmail()],
-//   message: [
-//     isRequired("Message is required"),
-//     isMinLength(
-//       minLength,
-//       `Your message must be at least ${minLength} characters long.`
-//     ),
-//   ],
-// };
-
-// const ruleKeys: any[] = Object.keys(rules);
-// let ruleThing: { [key: string]: any } = {};
-// for (const key of ruleKeys) {
-//   ruleThing[key as any] = (<HTMLInputElement>(
-//     document.getElementById(key)
-//   )).value;
-// }
-
-// console.log("VIEW RULETHING, RULES:>>", { ruleThing });
-// const result = new Validation(rules).validate({
-//   name: "",
-//   email: "omeone.com",
-//   message: "blah",
-// });
-// console.log(result);
