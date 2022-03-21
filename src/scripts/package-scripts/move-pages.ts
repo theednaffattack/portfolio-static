@@ -1,7 +1,7 @@
-import { copyFolderRecursiveSync } from "../../library/copy-folder-recursive-sync";
+import { copyFolderContentsRecursiveSync } from "../../library/copy-folder-contents-recursive-sync";
 
 const source = "src/pages";
 
 const target = "dist";
 
-copyFolderRecursiveSync(source, target);
+copyFolderContentsRecursiveSync(source, target);
