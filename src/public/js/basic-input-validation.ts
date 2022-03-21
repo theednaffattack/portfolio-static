@@ -88,7 +88,6 @@ export class Validation<I extends InputStrings> {
           }
         }
         if (errorMessage) {
-          console.log(errorMessage);
           errors[key as keyof I] = errorMessage;
         }
         return errors;
