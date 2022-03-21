@@ -441,7 +441,7 @@ input:focus:invalid {
 
 .contact-form__input-error {
   color: #d32f2f;
-  font-size: 0.7em;
+  font-size: calc(0.7em * var(--text-multiplier));
   min-height: 10px;
 }
 
