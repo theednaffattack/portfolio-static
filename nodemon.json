@@ -1,0 +1,18 @@
+{
+  "ignore": [".git*", "node_modules/**/node_modules"],
+  "verbose": true,
+  "exec": "rimraf ./dist && pnpm build && pnpm move-public-dir && pnpm move-pages-dir && node ./dist/dev-server.js",
+  "watch": [
+    "./server.ts",
+    "./pnpm-lock.yml",
+    "./nodemon.json",
+    "./package.json",
+    "./src/**/*.ts",
+    "./src/**/*.css",
+    "./src/pages/*.html"
+  ],
+  "ext": "ts,css,html",
+  "env": {
+    "NODE_ENV": "development"
+  }
+}
