@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jam with Vite</title>
+  </head>
+  <body>
+    <!--render our React component here 👇-->
+    <div id="root"></div>
+
+    <!--type="module" lets us use ESM import syntax in the browser-->
+    <script type="module">
+      // yes, we can just import .jsx directly here!
+      import Component from "./_includes/GlassCounter.jsx";
+      // we can import node_modules too
+      import React from "react";
+      import ReactDOM from "react-dom";
+      const root = document.getElementById("root");
+      ReactDOM.render(React.createElement(Component), root);
+    </script>
+  </body>
+</html>

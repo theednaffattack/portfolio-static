@@ -1,0 +1,13 @@
+---
+title: Eleventy Blog with MDX
+count: 11
+---
+
+import Counter from "./counter.js";
+
+<h1>{props.title}</h1>
+
+export const serializeEleventyProps = (props) => ({
+  title: props.title,
+  count: props.count,
+});

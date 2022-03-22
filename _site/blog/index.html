@@ -1,0 +1,79 @@
+<div id="MDX_ROOT_8d62b8c5-a3f5-43c1-b543-80b9d5ed6c21" data-reactroot="">
+  <h1>Eleventy Blog with MDX</h1>
+</div>
+<script>
+  (() => {
+    const a = (u) => {
+      if (u === "react") return window.React;
+    };
+    var j = (() => {
+      var u = Object.create,
+        o = Object.defineProperty,
+        i = Object.getOwnPropertyDescriptor,
+        d = Object.getOwnPropertyNames,
+        p = Object.getPrototypeOf,
+        y = Object.prototype.hasOwnProperty,
+        c = (e) => o(e, "__esModule", { value: !0 }),
+        s = ((e) =>
+          typeof a != "undefined"
+            ? a
+            : typeof Proxy != "undefined"
+            ? new Proxy(e, {
+                get: (t, r) => (typeof a != "undefined" ? a : t)[r],
+              })
+            : e)(function (e) {
+          if (typeof a != "undefined") return a.apply(this, arguments);
+          throw new Error('Dynamic require of "' + e + '" is not supported');
+        }),
+        m = (e, t) => {
+          c(e);
+          for (var r in t) o(e, r, { get: t[r], enumerable: !0 });
+        },
+        v = (e, t, r) => {
+          if ((t && typeof t == "object") || typeof t == "function")
+            for (let n of d(t))
+              !y.call(e, n) &&
+                n !== "default" &&
+                o(e, n, {
+                  get: () => t[n],
+                  enumerable: !(r = i(t, n)) || r.enumerable,
+                });
+          return e;
+        },
+        b = (e) =>
+          v(
+            c(
+              o(
+                e != null ? u(p(e)) : {},
+                "default",
+                e && e.__esModule && "default" in e
+                  ? { get: () => e.default, enumerable: !0 }
+                  : { value: e, enumerable: !0 }
+              )
+            ),
+            e
+          ),
+        f = {};
+      m(f, { default: () => w, serializeEleventyProps: () => O });
+      var l = b(s("react")),
+        O = (e) => ({ title: e.title, count: e.count });
+      function g(e = {}) {
+        let t = Object.assign({}, e.components),
+          { wrapper: r } = t,
+          n = l.default.createElement(
+            l.default.Fragment,
+            null,
+            l.default.createElement("h1", null, e.title)
+          );
+        return r ? l.default.createElement(r, e, n) : n;
+      }
+      var w = g;
+      return f;
+    })();
+    const E = JSON.parse('{"title":"Eleventy Blog with MDX","count":11}');
+    ReactDOM.hydrate(
+      React.createElement(j.default, E, null),
+      document.querySelector("#MDX_ROOT_8d62b8c5-a3f5-43c1-b543-80b9d5ed6c21")
+    );
+  })();
+</script>
