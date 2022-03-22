@@ -1,5 +1,9 @@
 # Notes
 
+## Slinkity Docs
+
+https://slinkity.dev/docs/styling/
+
 ## Animated Hamburger Menu
 
 https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_icon_js
