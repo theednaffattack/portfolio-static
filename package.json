@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "rimraf _site && slinkity --serve --incremental --input='pages'",
+    "dev": "rimraf _site && slinkity --serve --incremental",
     "build": "slinkity",
     "first": "npx slinkity --serve --incremental",
     "test": "echo \"Error: no test specified\" && exit 1"
