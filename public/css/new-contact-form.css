@@ -1,0 +1,16 @@
+form {
+  display: grid;
+  grid-template-columns: lfr;
+}
+
+.contact-form__input-error {
+  min-height: 1em;
+}
+
+form input {
+  width: calc(14.5em * var(--text-multiplier));
+}
+
+form textarea {
+  width: calc(14.5em * var(--text-multiplier));
+}

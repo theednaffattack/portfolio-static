@@ -1,5 +1,9 @@
 # Notes
 
+## Patch package with PNPM
+
+https://github.com/milahu/patch-package-with-pnpm-support
+
 ## Slinkity Docs
 
 https://slinkity.dev/docs/styling/

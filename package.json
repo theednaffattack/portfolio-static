@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "serve": "pnpm build && npx http-server _site",
     "dev": "rimraf _site && slinkity --serve --incremental",
     "build": "slinkity",
-    "first": "npx slinkity --serve --incremental",
+    "start": "slinkity --serve",
+    "postinstall": "patch-package",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,11 +16,16 @@
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^1.0.0",
+    "@milahu/patch-package-with-pnpm-support": "^6.4.8",
     "@slinkity/renderer-react": "^0.1.8",
     "@types/react": "^17.0.41",
+    "motion": "^10.7.0",
+    "postinstall-postinstall": "^2.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
     "rimraf": "^3.0.2",
-    "slinkity": "^0.6.4"
+    "sass": "^1.51.0",
+    "slinkity": "^0.7.0"
   }
 }
