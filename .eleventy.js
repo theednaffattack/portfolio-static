@@ -5,6 +5,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.ignores.add("README.md");
   eleventyConfig.ignores.add("notes");
 
+  // eleventyConfig.addPassthroughCopy("public");
   // Create collection from _data/customData.js
   // getAll()[0].data.[customKey]
   eleventyConfig.addCollection("customDataCollection", (collection) => {
@@ -26,6 +27,8 @@ module.exports = function (eleventyConfig) {
   });
 
   return {
+    markdownTemplateEngine: "njk",
+    htmlTemplateEngine: "njk",
     dir: {
       input: "pages",
     },
