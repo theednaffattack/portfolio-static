@@ -1,0 +1,24 @@
+<!--_includes/base.njk-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }}</title>
+    <link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/css/new-contact-form.css" />
+</head>
+<body>
+  <main>
+  {{ content | safe }}
+</main>
+    <footer><p>Made with ❤️ by Eddie Naff.</p></footer>
+
+    <script type="module">
+      import { validateFormOnSubmit } from "/js/input-validation.ts";
+      import { rules } from "/js/contact-form-rules.ts";
+
+      validateFormOnSubmit("contact-form", rules, "contact-form__input-error");
+    </script>
+</body>
+</html>

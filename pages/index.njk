@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eddie Naff</title>
+    <link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <link rel="stylesheet" href="./css/styles.css">
+  
+
+
+  </head>
+  <body id="root">
+    <header>
+      <p class="header-logo">Eddie Naff</p>
+      {% component "top-navigation.tsx", hydrate="none" %}
+      {# <nav class="new-nav">
+        <ul id="top-menu">
+          <li> <a href="#about">about</a></li>
+          <li><a href="#projects">projects</a></li>
+          <li><a href="#contact">contact</a></li>
+          <li><a href="/blog">blog</a></li>
+        </ul>
+      </nav> #}
+    </header>
+    <main>
+      <section id="introduction">
+      
+        <p>Hi, I’m Eddie, a front-end developer focused on creating beautiful and user friendly applications.</p>
+      </section>
+      <section id="projects">
+        <h2>PROJECTS</h2>
+
+        {% component 'project-section.tsx', hydrate='none' %}
+
+      </section>
+      <section id="about">
+        <h2>ABOUT</h2>
+
+        {% component 'about-section.tsx', hydrate='none' %}
+      </section>
+      <section id="contact">
+        <h2>CONTACT</h2>
+
+        {% component 'contact-form.tsx', hydrate='none' %}
+        
+      </section>
+    </main>
+    <footer><p>Made with ❤️ by Eddie Naff.</p></footer>
+
+    <script type="module">
+      import { validateFormOnSubmit } from "/js/input-validation.ts";
+      import { rules } from "/js/contact-form-rules.ts";
+
+      validateFormOnSubmit("contact-form", rules, "contact-form__input-error");
+    </script>
+    
+  </body>
+</html>

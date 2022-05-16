@@ -1,4 +1,5 @@
+# Hide dependencies
 node_modules
 
 # Hide build files
-dist
+_site
