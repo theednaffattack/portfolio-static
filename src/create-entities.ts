@@ -1,12 +1,49 @@
-import { GridAndRooms, gridSettings } from "./create-dungeon";
-import { Coords } from "./game-action";
+import {
+  EntityDesignation,
+  GridAndRooms,
+  gridSettings,
+} from "./create-dungeon";
+import { Coords } from "./game-reducer";
+import { potionRegistry as pr } from "./potion-registry";
 import { randomInteger } from "./util.random-number";
+import { weaponRegistry as wr } from "./weapon-registry";
+
+export interface EntityBase {
+  type: EntityDesignation;
+}
+
+export type WeaponNames =
+  | "Laser Pistol"
+  | "Laser Rifle"
+  | "Plasma Pistol"
+  | "Plasma Rifle"
+  | "Electric Chainsaw"
+  | "Railgun"
+  | "Dark Energy Cannon"
+  | "B.F.G";
+
+export interface Character extends EntityBase {
+  health: number;
+  level: number;
+}
+
+export interface Weapon extends EntityBase {
+  damage: number;
+  name: WeaponNames;
+  cost: number;
+}
+
+export interface HealthPotion extends EntityBase {
+  health: number;
+  name: string;
+  cost: number;
+}
 
 export function createEntities(gameMap: GridAndRooms, level = 1) {
   //they are all arrays because we will use
   // pop() with an (while array has length > 0) loop
 
-  const bosses: any[] = [];
+  const bosses: Character[] = [];
   if (level === 4) {
     bosses.push({
       health: 400,
@@ -14,7 +51,7 @@ export function createEntities(gameMap: GridAndRooms, level = 1) {
       type: "boss",
     });
   }
-  const enemies: any[] = [];
+  const enemies: Character[] = [];
 
   for (let i = 0; i < 7; i++) {
     enemies.push({
@@ -28,60 +65,40 @@ export function createEntities(gameMap: GridAndRooms, level = 1) {
       type: "enemy",
     });
   }
-  const exits = [];
+  const exits: EntityBase[] = [];
   if (level < 4) {
     exits.push({
       type: "exit",
     });
   }
 
-  const players = [
+  const players: EntityBase[] = [
     {
       type: "player",
     },
   ];
 
-  const potions = [];
+  const potions: HealthPotion[] = [];
   for (let i = 0; i < 5; i++) {
-    potions.push({ type: "potion" });
+    potions.push({
+      cost: pr.elixir.cost,
+      type: pr.elixir.type,
+      health: pr.elixir.health,
+      name: pr.elixir.name.toLowerCase(),
+    });
   }
 
-  const weaponTypes = [
-    {
-      name: "Laser Pistol",
-      damage: 15,
-    },
-    {
-      name: "Laser Rifle",
-      damage: 19,
-    },
-    {
-      name: "Plasma Pistol",
-      damage: 26,
-    },
-    {
-      name: "Plasma Rifle",
-      damage: 28,
-    },
-    {
-      name: "Electric ChainSaw",
-      damage: 31,
-    },
-    {
-      name: "Railgun",
-      damage: 33,
-    },
-    {
-      name: "Dark Energy Cannon",
-      damage: 40,
-    },
-    {
-      name: "B.F.G",
-      damage: 43,
-    },
+  const weaponTypes: Weapon[] = [
+    wr.bfg,
+    wr.darkEnergyCannon,
+    wr.electricChainsaw,
+    wr.laserPistol,
+    wr.laserRifle,
+    wr.plasmaRifle,
+    wr.railgun,
   ];
 
-  const weapons: any[] = [];
+  const weapons: Weapon[] = [];
   // weapon types will vary based on the level passed to the  createEntities function
   const qualifying = weaponTypes
     .filter((weapon) => weapon.damage < level * 10 + 10)
@@ -92,8 +109,10 @@ export function createEntities(gameMap: GridAndRooms, level = 1) {
     //the Object.assign() method is used to copy the values from one or more source objects to a target object.
     //It will return the target object --> the target object is {}
 
-    const weapon: { type?: string; name: string; damage: number } =
-      Object.assign({}, qualifying[randomInteger(0, qualifying.length - 1)]);
+    const weapon: Weapon = Object.assign(
+      {},
+      qualifying[randomInteger(0, qualifying.length - 1)]
+    );
     weapon.type = "weapon";
     weapons.push(weapon);
   }

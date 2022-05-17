@@ -13,7 +13,6 @@ export function useEventListener<
   element: HTMLElement | Document | Window | null = window,
   options?: Options
 ): void {
-  console.log("CAN I SEE WINDOW???", window);
   // Create a ref that stores handler
   const savedHandlerRef =
     useRef<

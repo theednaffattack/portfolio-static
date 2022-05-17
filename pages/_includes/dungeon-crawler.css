@@ -1,9 +1,11 @@
 :root {
   --background-color: #2d2d2d;
   --floor: #d6d1d1;
-  --enemy: #8ce114;
+  /* --enemy: #8ce114; */
+  --enemy: deeppink;
   --weapon: #f3f70c;
-  --potion: #ff0000;
+  /* --potion: #ff0000; */
+  --potion: brown;
   --player: #fc8d8d;
   --exit: #00b9f1;
   --boss: #c447e0;
@@ -16,16 +18,16 @@
   --color-primary-darkest: hsl(var(--color), calc(var(--l) - 10%));
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
 .app {
   display: flex;
   justify-content: center;
-  position: relative;
 }
 
 .state-viewer {
-  position: absolute;
-  top: 0;
-  right: 0;
   background-color: beige;
   border: 2px dashed limegreen;
 }

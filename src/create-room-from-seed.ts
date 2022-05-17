@@ -3,14 +3,16 @@ import { randomInteger } from "./random-integer";
 import { Room, gridSettings, GridSquare, GridAndRooms } from "./create-dungeon";
 import { isValidRoomPlacement } from "./is-valid-room-placement";
 
+type RoomsFromSeedReturn = {
+  grid: GridSquare[][];
+  placedRooms: Room[];
+};
+
 export function createRoomsFromSeed(
   grid: GridAndRooms,
   { x, y, width, height }: Room,
   range = gridSettings.ROOM_SIZE_RANGE
-): {
-  grid: GridSquare[][];
-  placedRooms: Room[];
-} {
+): RoomsFromSeedReturn {
   // range for generating the random room heights and widths
   const [min, max] = range;
 

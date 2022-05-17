@@ -3,6 +3,8 @@ lockfileVersion: 5.3
 specifiers:
   '@11ty/eleventy': ^1.0.0
   '@milahu/patch-package-with-pnpm-support': ^6.4.8
+  '@react-aria/accordion': ^3.0.0-alpha.7
+  '@react-aria/interactions': ^3.8.4
   '@slinkity/renderer-react': ^0.1.8
   '@types/react': ^17.0.41
   motion: ^10.7.0
@@ -13,6 +15,10 @@ specifiers:
   rimraf: ^3.0.2
   sass: ^1.51.0
   slinkity: ^0.7.0
+
+dependencies:
+  '@react-aria/accordion': 3.0.0-alpha.7_react@17.0.2
+  '@react-aria/interactions': 3.8.4_react@17.0.2
 
 devDependencies:
   '@11ty/eleventy': 1.0.0
@@ -310,6 +316,13 @@ packages:
       '@babel/types': 7.17.0
     dev: true
 
+  /@babel/runtime/7.17.9:
+    resolution: {integrity: sha512-lSiBBvodq29uShpWGNbgFdKYNiFDo5/HIYsaCEY9ff4sb10x9jizo2+pRrSyF4jKZCXqgzuqBOQKbUm90gQwJg==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.9
+    dev: false
+
   /@babel/template/7.16.7:
     resolution: {integrity: sha512-I8j/x8kHUrbYRTUxXrrMbfCa7jxkE7tZre39x3kjr9hvI82cK1FfqLygotcWN5kdPGWcLdWMHpSBavse5tWw3w==}
     engines: {node: '>=6.9.0'}
@@ -345,9 +358,62 @@ packages:
       to-fast-properties: 2.0.0
     dev: true
 
+  /@formatjs/ecma402-abstract/1.11.4:
+    resolution: {integrity: sha512-EBikYFp2JCdIfGEb5G9dyCkTGDmC57KSHhRQOC3aYxoPWVZvfWCDjZwkGYHN7Lis/fmuWl906bnNTJifDQ3sXw==}
+    dependencies:
+      '@formatjs/intl-localematcher': 0.2.25
+      tslib: 2.3.1
+    dev: false
+
+  /@formatjs/fast-memoize/1.2.1:
+    resolution: {integrity: sha512-Rg0e76nomkz3vF9IPlKeV+Qynok0r7YZjL6syLz4/urSg0IbjPZCB/iYUMNsYA643gh4mgrX3T7KEIFIxJBQeg==}
+    dependencies:
+      tslib: 2.3.1
+    dev: false
+
+  /@formatjs/icu-messageformat-parser/2.1.0:
+    resolution: {integrity: sha512-Qxv/lmCN6hKpBSss2uQ8IROVnta2r9jd3ymUEIjm2UyIkUCHVcbUVRGL/KS/wv7876edvsPe+hjHVJ4z8YuVaw==}
+    dependencies:
+      '@formatjs/ecma402-abstract': 1.11.4
+      '@formatjs/icu-skeleton-parser': 1.3.6
+      tslib: 2.3.1
+    dev: false
+
+  /@formatjs/icu-skeleton-parser/1.3.6:
+    resolution: {integrity: sha512-I96mOxvml/YLrwU2Txnd4klA7V8fRhb6JG/4hm3VMNmeJo1F03IpV2L3wWt7EweqNLES59SZ4d6hVOPCSf80Bg==}
+    dependencies:
+      '@formatjs/ecma402-abstract': 1.11.4
+      tslib: 2.3.1
+    dev: false
+
+  /@formatjs/intl-localematcher/0.2.25:
+    resolution: {integrity: sha512-YmLcX70BxoSopLFdLr1Ds99NdlTI2oWoLbaUW2M406lxOIPzE1KQhRz2fPUkq34xVZQaihCoU29h0KK7An3bhA==}
+    dependencies:
+      tslib: 2.3.1
+    dev: false
+
   /@iarna/toml/2.2.5:
     resolution: {integrity: sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==}
     dev: true
+
+  /@internationalized/date/3.0.0-rc.0:
+    resolution: {integrity: sha512-R8ui3O2G43fZ/z5cBdJuU6nswKtuVrKloDE6utvqKEeGf6igFoiapcjg7jbQ+WvWIDGtdUytOp2fOq/X4efBdQ==}
+    dependencies:
+      '@babel/runtime': 7.17.9
+    dev: false
+
+  /@internationalized/message/3.0.6:
+    resolution: {integrity: sha512-ECk3toFy87I2z5zipRNwdbouvRlIyMKb/FzKj1upMaNS52AKhpvrLgo3CY/ZXQKm4CRIbeh6p/F/Ztt+enhIEA==}
+    dependencies:
+      '@babel/runtime': 7.17.9
+      intl-messageformat: 9.13.0
+    dev: false
+
+  /@internationalized/number/3.1.0:
+    resolution: {integrity: sha512-CEts+2rIB4QveKeeF6xIHdn8aLVvUt5aiarkpCZgtMyYqfqo/ZBELf2UyhvLPGpRxcF24ClCISMTP9BTVreSAg==}
+    dependencies:
+      '@babel/runtime': 7.17.9
+    dev: false
 
   /@jridgewell/resolve-uri/3.0.5:
     resolution: {integrity: sha512-VPeQ7+wH0itvQxnG+lIzWgkysKIr3L9sslimFW55rHMdGu/qCQ5z5h9zq4gI8uBtqkpHhsF4Z/OwExufUCThew==}
@@ -574,6 +640,205 @@ packages:
       '@parcel/css-linux-x64-musl': 1.7.4
       '@parcel/css-win32-x64-msvc': 1.7.4
     dev: true
+
+  /@react-aria/accordion/3.0.0-alpha.7_react@17.0.2:
+    resolution: {integrity: sha512-aAhBW5mOeGH/ancZ3qY8Mw0EQqO5BUvR4PO0OO8YVEtyyZ5ew7Ble8Ds2fxl3zccehh4jzbNUMwVMafKvYBQ4A==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@react-aria/button': 3.4.4_react@17.0.2
+      '@react-aria/interactions': 3.8.4_react@17.0.2
+      '@react-aria/selection': 3.8.2_react@17.0.2
+      '@react-aria/utils': 3.12.0_react@17.0.2
+      '@react-stately/tree': 3.2.4_react@17.0.2
+      '@react-types/accordion': 3.0.0-alpha.5_react@17.0.2
+      '@react-types/button': 3.4.5_react@17.0.2
+      '@react-types/shared': 3.12.0_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-aria/button/3.4.4_react@17.0.2:
+    resolution: {integrity: sha512-Z4jh8WLXNk8BJZ28beXTJWFwnhdjyC6ymby7qD/UDckqbm5OqM18EqYbKmJVF3+MRScunZdGg2aw0jkNpzo+3w==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@react-aria/focus': 3.5.5_react@17.0.2
+      '@react-aria/interactions': 3.8.4_react@17.0.2
+      '@react-aria/utils': 3.12.0_react@17.0.2
+      '@react-stately/toggle': 3.2.7_react@17.0.2
+      '@react-types/button': 3.4.5_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-aria/focus/3.5.5_react@17.0.2:
+    resolution: {integrity: sha512-scv+jhbQ25JCh36gu8a++edvdEFdlRScdQdnkJOB4NbHbYYfY36APtI70hgQHdfq9dDl5fJ9LMsH9hoF7X3gLw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@react-aria/interactions': 3.8.4_react@17.0.2
+      '@react-aria/utils': 3.12.0_react@17.0.2
+      '@react-types/shared': 3.12.0_react@17.0.2
+      clsx: 1.1.1
+      react: 17.0.2
+    dev: false
+
+  /@react-aria/i18n/3.3.9_react@17.0.2:
+    resolution: {integrity: sha512-EOqiOu84NYH/CW0s/tt3yDqDsjHlrHdi5qzrOGpGN/BvxtA/4UkMBdi8TTKXdRk8oHUIdNW1z5mZxzxkLDy1sA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@internationalized/date': 3.0.0-rc.0
+      '@internationalized/message': 3.0.6
+      '@internationalized/number': 3.1.0
+      '@react-aria/ssr': 3.1.2_react@17.0.2
+      '@react-aria/utils': 3.12.0_react@17.0.2
+      '@react-types/shared': 3.12.0_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-aria/interactions/3.8.4_react@17.0.2:
+    resolution: {integrity: sha512-6EHFKK8pmjSJSKcBbduijPETKqE669XZ1VaEY8ubr6VnlVhCszvKHoxpU384CkNiDNLJOVkK6HDzPXsn3lxhng==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@react-aria/utils': 3.12.0_react@17.0.2
+      '@react-types/shared': 3.12.0_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-aria/selection/3.8.2_react@17.0.2:
+    resolution: {integrity: sha512-sBkSza8kT06tUKzIX68H2k+svYNCBOwhHmU0gbx164CmitCLk/akDGIds3LeoA9FhFFXw6/5CuLp6SNhmqlLWw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@react-aria/focus': 3.5.5_react@17.0.2
+      '@react-aria/i18n': 3.3.9_react@17.0.2
+      '@react-aria/interactions': 3.8.4_react@17.0.2
+      '@react-aria/utils': 3.12.0_react@17.0.2
+      '@react-stately/collections': 3.3.8_react@17.0.2
+      '@react-stately/selection': 3.9.4_react@17.0.2
+      '@react-types/shared': 3.12.0_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-aria/ssr/3.1.2_react@17.0.2:
+    resolution: {integrity: sha512-amXY11ImpokvkTMeKRHjsSsG7v1yzzs6yeqArCyBIk60J3Yhgxwx9Cah+Uu/804ATFwqzN22AXIo7SdtIaMP+g==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.17.9
+      react: 17.0.2
+    dev: false
+
+  /@react-aria/utils/3.12.0_react@17.0.2:
+    resolution: {integrity: sha512-1TMrE7UpgTgQHgW3z0r6Zo4CTUDwNsZEwzg+mQVub8ZalonhuNs5OrulUn+lRIsGELNktGNkeh/29WsS1Od8eg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@react-aria/ssr': 3.1.2_react@17.0.2
+      '@react-stately/utils': 3.4.1_react@17.0.2
+      '@react-types/shared': 3.12.0_react@17.0.2
+      clsx: 1.1.1
+      react: 17.0.2
+    dev: false
+
+  /@react-stately/collections/3.3.8_react@17.0.2:
+    resolution: {integrity: sha512-R4RXLc0aaCZaCTh3NT/lmpMtVqP3HIdi2d1kyq4/uIC8APUFzEoUMEV+P0k3nQ5v6mO/UCkP3ePdOywnJBm/Gg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@react-types/shared': 3.12.0_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-stately/selection/3.9.4_react@17.0.2:
+    resolution: {integrity: sha512-hgJ4raHFQMfQ1aQYgL+nRpQgA7GdPDh9esIeB8Ih+yS783cV4vyyqKxuLd2u9W4cilnEkgXjrI5Z21RU86jzEg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@react-stately/collections': 3.3.8_react@17.0.2
+      '@react-stately/utils': 3.4.1_react@17.0.2
+      '@react-types/shared': 3.12.0_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-stately/toggle/3.2.7_react@17.0.2:
+    resolution: {integrity: sha512-McKc2wIp1z7Dw6EqQgOgjr2QnKR+LWXppZjdx30K4hnCiP6cXZp66DmR2ngekPrtOYDN6Xdqbty/Ez7kiJxmnQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@react-stately/utils': 3.4.1_react@17.0.2
+      '@react-types/checkbox': 3.2.7_react@17.0.2
+      '@react-types/shared': 3.12.0_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-stately/tree/3.2.4_react@17.0.2:
+    resolution: {integrity: sha512-rGZuU0ynoN8Lv/Hhfh04FNlx+1c0RnM/5DIwwr8s7S0VWPQHMwGQiPkz+MFOk6Cx28sA/9ZXI4RjupjHvzJvKw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.17.9
+      '@react-stately/collections': 3.3.8_react@17.0.2
+      '@react-stately/selection': 3.9.4_react@17.0.2
+      '@react-stately/utils': 3.4.1_react@17.0.2
+      '@react-types/shared': 3.12.0_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-stately/utils/3.4.1_react@17.0.2:
+    resolution: {integrity: sha512-mjFbKklj/W8KRw1CQSpUJxHd7lhUge4i00NwJTwGxbzmiJgsTWlKKS/1rBf48ey9hUBopXT5x5vG/AxQfWTQug==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@babel/runtime': 7.17.9
+      react: 17.0.2
+    dev: false
+
+  /@react-types/accordion/3.0.0-alpha.5_react@17.0.2:
+    resolution: {integrity: sha512-/gEzPfx4KuObAD0XoGS42RU1hKziSWIrtbT2ptiWDTWTZm7z5t2PIfCOVI5+3NaNkQdC7HcplJrT5TlkAOmp1g==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@react-types/shared': 3.12.0_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-types/button/3.4.5_react@17.0.2:
+    resolution: {integrity: sha512-wqOw3LvqFRJl6lDhije7koTINWBv+LRBKAlGOri2ddw3VDqvm0/zu2ENDIP/XX0FtUzuffoc1U5YgxmBlXd7gQ==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@react-types/shared': 3.12.0_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-types/checkbox/3.2.7_react@17.0.2:
+    resolution: {integrity: sha512-c/hJwVRr7JoakyU39hUQstCc/0uPPvE+Eie8SspV2u9umSs7dYiUBc7F2wpboWIdNkQUEHG/Uq/Vs6/hk+yrkg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      '@react-types/shared': 3.12.0_react@17.0.2
+      react: 17.0.2
+    dev: false
+
+  /@react-types/shared/3.12.0_react@17.0.2:
+    resolution: {integrity: sha512-faGr9xOjtMlkQPfA1i36iUmWS/hpPPtxIwdAtBi6p7rCejmShMLFZ2YN4DxzbJUCVubF2S1+rMMIKuXG17DkEw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1
+    dependencies:
+      react: 17.0.2
+    dev: false
 
   /@rollup/pluginutils/4.2.0:
     resolution: {integrity: sha512-2WUyJNRkyH5p487pGnn4tWAsxhEFKN/pT8CMgHshd5H+IXkOnKvKZwsz5ZWz+YCXkleZRAU5kwbfgF8CPfDRqA==}
@@ -1029,6 +1294,11 @@ packages:
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
     dev: true
+
+  /clsx/1.1.1:
+    resolution: {integrity: sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==}
+    engines: {node: '>=6'}
+    dev: false
 
   /color-convert/1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
@@ -1916,6 +2186,15 @@ packages:
     resolution: {integrity: sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==}
     dev: true
 
+  /intl-messageformat/9.13.0:
+    resolution: {integrity: sha512-7sGC7QnSQGa5LZP7bXLDhVDtQOeKGeBFGHF2Y8LVBwYZoQZCgWeKoPGTa5GMG8g/TzDgeXuYJQis7Ggiw2xTOw==}
+    dependencies:
+      '@formatjs/ecma402-abstract': 1.11.4
+      '@formatjs/fast-memoize': 1.2.1
+      '@formatjs/icu-messageformat-parser': 2.1.0
+      tslib: 2.3.1
+    dev: false
+
   /is-binary-path/2.1.0:
     resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
     engines: {node: '>=8'}
@@ -2752,6 +3031,10 @@ packages:
       slash: 1.0.0
     dev: true
 
+  /regenerator-runtime/0.13.9:
+    resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
+    dev: false
+
   /require-directory/2.1.1:
     resolution: {integrity: sha1-jGStX9MNqxyXbiNE/+f3kqam30I=}
     engines: {node: '>=0.10.0'}
@@ -3210,7 +3493,6 @@ packages:
 
   /tslib/2.3.1:
     resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==}
-    dev: true
 
   /ua-parser-js/1.0.2:
     resolution: {integrity: sha512-00y/AXhx0/SsnI51fTc0rLRmafiGOM4/O+ny10Ps7f+j/b8p/ZY11ytMgznXkOVo4GQ+KwQG5UQLkLGirsACRg==}
