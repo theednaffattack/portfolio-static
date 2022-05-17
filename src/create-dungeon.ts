@@ -10,12 +10,25 @@ export interface GridSettings {
   MAX_ROOMS: number;
   ROOM_SIZE_RANGE: [number, number];
 }
+export type EntityDesignation =
+  | 0
+  | "boss"
+  | "door"
+  | "enemy"
+  | "exit"
+  | "floor"
+  | "player"
+  | "potion"
+  | "weapon";
 
 export interface GridSquare {
-  type: "floor" | "door" | "enemy" | "weapon" | "exit" | "player" | "boss" | 0;
+  type: EntityDesignation;
   id?: string;
   opacity?: number;
   distanceFromPlayer?: number;
+  cost?: number;
+  name?: string;
+  damage?: number;
 }
 
 export interface GridAndRooms {
