@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "pnpm build && npx http-server _site",
+    "serve": "pnpm build && npx http-server ./_site",
     "dev": "rimraf _site && slinkity --serve --incremental",
-    "static": "npx http-server ./_site ",
     "build": "slinkity",
     "start": "slinkity --serve",
     "postinstall": "patch-package",
