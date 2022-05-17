@@ -1,0 +1,80 @@
+:root {
+  --background-color: #2d2d2d;
+  --floor: #d6d1d1;
+  --enemy: #8ce114;
+  --weapon: #f3f70c;
+  --potion: #ff0000;
+  --player: #fc8d8d;
+  --exit: #00b9f1;
+  --boss: #c447e0;
+
+  --color: 0, 100%; /*the base color*/
+  --l: 50%; /*the initial lightness*/
+
+  --color-primary: hsl(var(--color), var(--l));
+  --color-primary-darker: hsl(var(--color), calc(var(--l) - 5%));
+  --color-primary-darkest: hsl(var(--color), calc(var(--l) - 10%));
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.state-viewer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: beige;
+  border: 2px dashed limegreen;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  color: red;
+}
+
+.flex-container {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: var(--background-color);
+}
+
+.cell {
+  height: 2em;
+  width: 2em;
+  border: 1px solid #2d2d2d;
+  background: #78d376;
+}
+
+.floor {
+  background: #d6d1d1;
+  border: 1px solid lighten(#d6d1d1, 2%);
+}
+.door {
+  background: red;
+}
+.enemy {
+  background: var(--enemy);
+}
+
+.weapon {
+  background: var(--weapon);
+}
+
+.player {
+  background: var(--player);
+}
+
+.potion {
+  background: var(--potion);
+}
+
+.exit {
+  background: var(--exit);
+}
+
+.boss {
+  background: var(--boss);
+}
