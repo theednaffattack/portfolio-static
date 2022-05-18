@@ -26,6 +26,7 @@ export default function Dungeon({
   ];
 
   const [state, dispatch] = useReducer(gameReducer, {
+    playerInput: ()=>void,
     entities: entities.grid,
     playerPosition,
     dungeonLevel: 1,
