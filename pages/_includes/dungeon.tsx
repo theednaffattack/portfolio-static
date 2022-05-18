@@ -72,6 +72,12 @@ export default function Dungeon({
     // whats in the cell we're heading to
     const destination = state.entities[y + vectorY][x + vectorX];
 
+    if (destination.type === "exit") {
+      dispatch({
+        type: GA.CREATE_LEVEL,
+      });
+    }
+
     if (destination.type === "weapon") {
       const { cost, damage, name, type } = destination;
       dispatch({
@@ -93,7 +99,7 @@ export default function Dungeon({
 
     // Stop player movement at walls (destination.type = 0) and enemies
     if (
-      destination.type &&
+      destination.type !== 0 &&
       destination.type !== "enemy" &&
       destination.type !== "boss"
     ) {
@@ -160,7 +166,7 @@ export default function Dungeon({
         Math.abs(playerY - rowIndex) + Math.abs(playerX - cellIndex);
 
       //then we will check if distance is > 10 then set opacity to 0
-      const black = 1;
+      const black = 0;
       const visible = 1;
       cell.opacity = visible;
 

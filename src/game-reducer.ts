@@ -1,5 +1,5 @@
-import { GridAndRooms, GridSquare } from "./create-dungeon";
-import { HealthPotion, Weapon } from "./create-entities";
+import { createDungeon, GridAndRooms, GridSquare } from "./create-dungeon";
+import { createEntities, HealthPotion, Weapon } from "./create-entities";
 
 export interface Entities {
   entities: GridAndRooms;
@@ -59,7 +59,7 @@ export type GameAction =
       payload: { entity: GridSquare; coords: Coords };
     }
   | { type: GameActionEnum.CHANGE_PLAYER_POSITION; payload: Coords }
-  | { type: GameActionEnum.CREATE_LEVEL; payload: CreateLevelPayload }
+  | { type: GameActionEnum.CREATE_LEVEL; payload?: CreateLevelPayload }
   | { type: GameActionEnum.SET_DUNGEON_LEVEL; payload: number }
   | { type: GameActionEnum.PICKUP_WEAPON; payload: Weapon }
   | { type: GameActionEnum.PICKUP_HEALTH_POTION; payload: HealthPotion }
@@ -86,12 +86,20 @@ export function gameReducer(
       //generate a new grid with the newly created player position
       return { ...state, playerPosition: payload };
     }
-    case "CREATE_LEVEL":
+    case GameActionEnum.CREATE_LEVEL: {
+      let dungeon = createDungeon();
+      let entities = createEntities(dungeon);
+      // console.log("VIEW ENTITIES", {
+      //   dungeon,
+      //   entities: entities.playerPosition,
+      // });
       return {
         ...state,
-        playerPosition: payload.playerPosition,
-        entities: payload.entities,
+        playerPosition: entities.playerPosition,
+        entities: entities.entities.grid,
+        dungeonLevel: state.dungeonLevel + 1,
       };
+    }
 
     case GameActionEnum.PICKUP_HEALTH_POTION: {
       const { health, type, name } = payload;
@@ -119,12 +127,15 @@ export function gameReducer(
         };
       }
       if ("health" in payload) {
-        const { health, name, type } = payload;
+        const { cost, health, name, type } = payload;
         return {
           ...state,
           playerInventory: {
             ...state.playerInventory,
-            potions: [...state.playerInventory.potions, { health, name, type }],
+            potions: [
+              ...state.playerInventory.potions,
+              { cost, health, name, type },
+            ],
           },
         };
       }
