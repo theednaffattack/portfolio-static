@@ -6,7 +6,6 @@ export default defineConfig({
   renderers: [rendererReact],
 
   eleventyIgnores(ignores) {
-    console.log("WATCH ALL IGNORES", { ignores });
     return ignores;
   },
 });
