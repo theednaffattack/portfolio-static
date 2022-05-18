@@ -192,16 +192,19 @@ export default function Dungeon({
   });
   return (
     <div className="wrapper">
-      <Accordion title="Player Info">
-        <StateViewer
-          data={{
-            inventory: state.playerInventory,
-            dungeonLevel: state.dungeonLevel,
-          }}
-        />
-      </Accordion>
       <div className="app">
-        <div className="flex-container">{cells}</div>
+        <div className="flex-container">
+          <Accordion title="Player Info">
+            <StateViewer
+              data={{
+                dungeonLevel: state.dungeonLevel,
+                playerPosition: state.playerPosition,
+                inventory: state.playerInventory,
+              }}
+            />
+          </Accordion>
+          {cells}
+        </div>
       </div>
     </div>
   );
