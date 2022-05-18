@@ -80,7 +80,7 @@ export function gameReducer(
       entitiesCopy[y][x] = payload.entity;
       return { ...state, entities: entitiesCopy };
     }
-    case "CHANGE_PLAYER_POSITION": {
+    case GameActionEnum.CHANGE_PLAYER_POSITION: {
       // when the user will press the 'up' key it will send an action to the Redux store
       // this action will have it's current coords, and starting from that we will
       //generate a new grid with the newly created player position
@@ -88,11 +88,8 @@ export function gameReducer(
     }
     case GameActionEnum.CREATE_LEVEL: {
       let dungeon = createDungeon();
-      let entities = createEntities(dungeon);
-      // console.log("VIEW ENTITIES", {
-      //   dungeon,
-      //   entities: entities.playerPosition,
-      // });
+      let entities = createEntities(dungeon, state.dungeonLevel + 1);
+
       return {
         ...state,
         playerPosition: entities.playerPosition,
