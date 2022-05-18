@@ -10,10 +10,6 @@ import {
 } from "../../src/game-reducer";
 import { useEventListener } from "../../src/hooks.use-event-listener";
 import { potionRegistry as pr } from "../../src/potion-registry";
-import {
-  weaponRegistry,
-  weaponRegistry as wr,
-} from "../../src/weapon-registry";
 
 interface Entities {
   entities: GridAndRooms;
@@ -23,12 +19,6 @@ interface Entities {
 interface DungeonProps {
   entities: Entities;
   element?: React.MutableRefObject<HTMLDivElement>;
-}
-
-export interface GameState {
-  dungeonLevel: number;
-  entities: Entities["entities"]["grid"];
-  playerPosition: Coords;
 }
 
 interface CreateLevelPayload {
@@ -101,6 +91,7 @@ export default function Dungeon({
     if (
       destination.type !== 0 &&
       destination.type !== "enemy" &&
+      destination.type !== "exit" &&
       destination.type !== "boss"
     ) {
       // These should be batched per React docs
@@ -154,14 +145,6 @@ export default function Dungeon({
   const entitiesWithFog = state.entities.map((row, rowIndex) =>
     row.map((cell, cellIndex) => {
       //we create a new property on each cell that measures the distance from the player
-      // let realPlayerX = 0;
-      // let realPlayerY = 0;
-      // if (playerX) {
-      //   realPlayerX = playerX;
-      // }
-      // if (playerY) {
-      //   realPlayerY = playerY;
-      // }
       cell.distanceFromPlayer =
         Math.abs(playerY - rowIndex) + Math.abs(playerX - cellIndex);
 
