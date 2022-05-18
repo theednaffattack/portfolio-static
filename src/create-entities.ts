@@ -145,7 +145,6 @@ export function createEntities(gameMap: GridAndRooms, level = 1) {
   //from one room to another using Redux actions
   for (let i = 0; i < gameMap.grid.length; i++) {
     for (let j = 0; j < gameMap.grid[0].length; j++) {
-      // console.log("WHAT IS THIS???", gameMap.grid[i][j]);
       if (gameMap.grid[i][j].type === "door") {
         gameMap.grid[i][j].type = "floor";
       }
